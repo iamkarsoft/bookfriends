@@ -12,18 +12,34 @@
 <body>
     <div class="max-w-4xl mx-auto px-6 grid grid-cols-8 gap-12 mt-16">
         <div class="sidebar  col-span-2 border-r border-slate-400 space-y-6">
+        @auth
+
                 <ul>
-                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Ramos</a></li>
+                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">{{ auth()->user()->name }}</a></li>
                     <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Feed</a></li>
                 </ul>
 
                 <ul>
-                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">My Books</a></li>
+                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">My books</a></li>
+                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Add a book</a></li>
+                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Friend</a></li>
                 </ul>
 
                 <ul>
                     <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Logout</a></li>
                 </ul>
+        @endauth
+
+        @guest
+            <ul>
+                <li><a href="">Home</a></li>
+            </ul>
+            <ul>
+                <li><a href="">Login</a></li>
+                <li><a href="">Register</a></li>
+            </ul>
+        @endguest
+
         </div>
         <div class="col-span-6">
             @isset($header)
