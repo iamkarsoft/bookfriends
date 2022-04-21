@@ -32,11 +32,11 @@
 
         @guest
             <ul>
-                <li><a href="">Home</a></li>
+                <li><a href="/">Home</a></li>
             </ul>
             <ul>
-                <li><a href="">Login</a></li>
-                <li><a href="">Register</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="{{route('register')}}">Register</a></li>
             </ul>
         @endguest
 
