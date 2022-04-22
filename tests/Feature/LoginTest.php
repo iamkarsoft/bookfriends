@@ -12,8 +12,9 @@ it('redirect an authenticated user', function () {
     $this->actingAs($user)
         ->get('/auth/login')
         ->assertStatus(302);
-
-    // $this->actingAs($user)
-
-
 });
+
+
+it('shows an error when details not provided')
+    ->post('/login')
+    ->assertSessionHasErrors(['email', 'password']);
