@@ -11,7 +11,7 @@ it('has errors if details are not provided',)->post('/register')
     ->assertSessionHasErrors(['name', 'email', 'password']);
 
 
-test('register', function () {
+it('register the user', function () {
     post('/register', [
         'name' => 'Kofi Ramos',
         'email' => 'kofiramos@gmail.com',
@@ -24,3 +24,17 @@ test('register', function () {
         'email' => 'kofiramos@gmail.com'
     ])->assertAuthenticated();
 });
+
+
+it('register the user higher order')
+    ->tap(function () {
+        $this->post('/register', [
+            'name' => 'Kofi Ramos',
+            'email' => 'kofiramos@gmail.com',
+            'password' => 'hellofresh'
+        ])
+            ->assertRedirect('/');
+    })->assertDatabaseHas('users', [
+        'name' => 'Kofi Ramos',
+        'email' => 'kofiramos@gmail.com'
+    ])->assertAuthenticated();
