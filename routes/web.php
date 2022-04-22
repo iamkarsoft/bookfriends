@@ -18,4 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class);
 
 
+
 Route::get('/register', RegisterIndexController::class)->name('register');
+
+Route::fallback(fn () => view('auth.register'));
