@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginIndexController;
 use App\Http\Controllers\RegisterIndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
 
-
-
-Route::get('/register', RegisterIndexController::class)->name('register');
+Route::get('/auth/login', LoginIndexController::class)->name('login');
+Route::get('/auth/register', RegisterIndexController::class)->name('register');
 
 Route::fallback(fn () => view('auth.register'));
