@@ -4,10 +4,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\post;
 
 uses(RefreshDatabase::class);
-it('has errors if details are not provided', function () {
-    post('/register')
-        ->assertSessionHasErrors(['name', 'email', 'password']);
-});
+
+it('shows the register page')->get('/auth/register')->assertSee('register');
+
+it('has errors if details are not provided',)->post('/register')
+    ->assertSessionHasErrors(['name', 'email', 'password']);
 
 
 test('register', function () {
