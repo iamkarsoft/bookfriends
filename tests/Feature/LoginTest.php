@@ -8,9 +8,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 it('redirect an authenticated user', function () {
 
-    $user = User::factory()->create();
 
-    $this->actingAs($user)
+    actingAs(User::factory()->create())
         ->get('/auth/login')
         ->assertStatus(302);
 });

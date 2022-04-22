@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Contracts\Auth\Authenticatable;
+
 uses(Tests\TestCase::class)->in('Feature');
 
 /*
@@ -42,4 +44,10 @@ expect()->extend('toBeOne', function () {
 function something()
 {
     // ..
+}
+
+function actingAs(Authenticatable $user)
+{
+
+    return test()->actingAs($user);
 }
