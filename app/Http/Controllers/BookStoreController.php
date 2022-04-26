@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BookStoreController extends Controller
@@ -19,6 +20,12 @@ class BookStoreController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
+        $book = Book::create($request->only('title', 'author'));
+
+        $request->user()->books()->attach($book, [
+            'status' => $request->status
+        ]);
+
+        return redirect('/');
     }
 }
