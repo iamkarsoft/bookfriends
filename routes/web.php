@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookStoreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginIndexController;
 use App\Http\Controllers\RegisterIndexController;
@@ -22,3 +23,7 @@ Route::get('/auth/login', LoginIndexController::class)->name('login');
 Route::get('/auth/register', RegisterIndexController::class)->name('register');
 
 Route::fallback(fn () => view('auth.register'));
+
+
+// book store
+Route::post('/books', BookStoreController::class)->name('books.store');
