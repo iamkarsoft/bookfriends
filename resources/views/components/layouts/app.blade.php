@@ -26,7 +26,10 @@
                 </ul>
 
                 <ul>
-                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Logout</a></li>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button class="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Logout</button>
+                    </form>
                 </ul>
         @endauth
 

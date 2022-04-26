@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="mt-8">
-        <form action="/login" class="space-y-8">
+        <form action="/login" method="Post" class="space-y-8">
             @csrf
             <div>
                 <label for="email">Email</label>

@@ -18,7 +18,7 @@ it('redirect an authenticated user', function () {
 });
 
 
-it('shows the login page')->get('/login')->assertSee('Login');
+it('shows the login page')->get('/auth/login')->assertSee('Login')->assertOk();
 
 it('shows an error when details not provided')
     ->post('/login')

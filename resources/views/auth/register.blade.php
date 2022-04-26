@@ -4,7 +4,8 @@
     </x-slot>
 
     <div class="mt-8">
-        <form action="/register" class="space-y-8">
+        <form action="/register" method="Post" class="space-y-8">
+            @csrf
             <div>
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" id="" class="block border border-slate-400 rounded mt-2">

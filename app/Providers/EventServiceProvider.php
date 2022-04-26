@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
+use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,14 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
+
+        Fortify::registerView(function () {
+            return view('auth.register');
+        });
     }
 
     /**
