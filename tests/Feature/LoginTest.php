@@ -6,14 +6,19 @@ use function Pest\Laravel\post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
+
+
 it('redirect an authenticated user', function () {
 
+    expect(User::factory()->create())->toBeRedirectFor('/auth/login');
 
-    actingAs(User::factory()->create())
-        ->get('/auth/login')
-        ->assertStatus(302);
+    // actingAs(User::factory()->create())
+    //     ->get('/auth/login')
+    //     ->assertStatus(302);
 });
 
+
+it('shows the login page')->get('/login')->assertSee('Login');
 
 it('shows an error when details not provided')
     ->post('/login')

@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Contracts\Auth\Authenticatable;
+
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -11,7 +14,6 @@
 |
 */
 
-use Illuminate\Contracts\Auth\Authenticatable;
 
 uses(Tests\TestCase::class)->in('Feature');
 
@@ -26,10 +28,16 @@ uses(Tests\TestCase::class)->in('Feature');
 |
 */
 
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
+expect()->extend('toBeAlex', function () {
+    return $this->toBe('Alex');
 });
 
+
+
+expect()->extend('toBeRedirectFor', function (string $url, string $method = 'get') {
+
+    return actingAs($this->value)->{$method}($url)->assertStatus(302);
+});
 /*
 |--------------------------------------------------------------------------
 | Functions

@@ -5,7 +5,7 @@
 
     <div class="mt-8">
         <form action="/login" class="space-y-8">
-
+            @csrf
             <div>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" id="" class="block border border-slate-400 rounded mt-2">
