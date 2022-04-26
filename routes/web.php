@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookCreateController;
 use App\Http\Controllers\BookStoreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginIndexController;
@@ -27,3 +28,4 @@ Route::fallback(fn () => view('auth.register'));
 
 // book store
 Route::post('/books', BookStoreController::class)->name('books.store');
+Route::get('/books', BookCreateController::class)->name('books.create');

@@ -15,14 +15,14 @@
         @auth
 
                 <ul>
-                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">{{ auth()->user()->name }}</a></li>
-                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Feed</a></li>
+                    <li><a class="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">{{ auth()->user()->name }}</a></li>
+                    <li><a class="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Feed</a></li>
                 </ul>
 
                 <ul>
-                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">My books</a></li>
-                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Add a book</a></li>
-                    <li><a href="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Friend</a></li>
+                    <li><a class="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">My books</a></li>
+                    <li><a href="{{ route('books.create')}}" class="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Add a book</a></li>
+                    <li><a class="font-bold text-lg text-slate-600 hover:text-slate-800 block py-1">Friend</a></li>
                 </ul>
 
                 <ul>
