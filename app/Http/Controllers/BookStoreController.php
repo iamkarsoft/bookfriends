@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use App\Models\Pivot\BookUser;
+use Illuminate\Validation\Rule;
 
 class BookStoreController extends Controller
 {
@@ -23,7 +25,7 @@ class BookStoreController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'author' => 'required',
-            'status' => 'required'
+            'status' => ['required', Rule::in(array_keys(BookUser::$statuses))]
         ]);
 
         $book = Book::create($request->only('title', 'author'));
