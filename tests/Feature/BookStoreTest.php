@@ -4,14 +4,20 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
+
+// this runs before each test
+beforeEach(function () {
+    $this->user = User::factory()->create();
+});
+
 it('only allows authenticated users to store book')
     ->post('/books')
     ->assertStatus(302);
 
 
 it('creates a book', function () {
-    $user = User::factory()->create();
-    $this->actingAs($user)
+
+    $this->actingAs($this->user)
         ->post('/books', [
             'title' => 'A book',
             'author' => 'An author',
@@ -25,7 +31,14 @@ it('creates a book', function () {
     ]);
 
     $this->assertDatabaseHas('book_user', [
-        'user_id' => $user->id,
+        'user_id' => $this->user->id,
         'status' => 'WANT_TO_READ'
     ]);
 });
+
+
+it('require a book and a title')
+    // ->skip() // will skip this test
+    ->tap(fn () => $this->actingAs($this->user))
+    ->post('/books')
+    ->assertSessionHasErrors(['title', 'author', 'status']);

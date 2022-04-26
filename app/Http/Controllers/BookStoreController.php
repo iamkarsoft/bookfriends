@@ -20,6 +20,12 @@ class BookStoreController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'author' => 'required',
+            'status' => 'required'
+        ]);
+
         $book = Book::create($request->only('title', 'author'));
 
         $request->user()->books()->attach($book, [
