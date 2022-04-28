@@ -1,7 +1,19 @@
 <?php
 
-test('example', function () {
-    $response = $this->get('/');
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-    $response->assertStatus(200);
+
+uses(RefreshDatabase::class);
+
+beforeEach(function () {
+    $this->user = User::factory()->create();
+});
+
+
+test('have access to create book page', function () {
+
+    $this->actingAs($this->user)
+        ->get('/books')
+        ->assertSeeText('Create Books');
 });

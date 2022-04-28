@@ -5,7 +5,7 @@
     </x-slot>
 
     <div class="mt-8">
-        <p>Create  Books</p>
+        <p>Create Books</p>
 
         <form action="/books" method="Post" class="space-y-8">
             @csrf
