@@ -15,5 +15,5 @@ test('have access to create book page', function () {
 
     $this->actingAs($this->user)
         ->get('/books')
-        ->assertSeeText('Create Books');
+        ->assertSeeText('Add a book');
 });
